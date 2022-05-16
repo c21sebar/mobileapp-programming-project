@@ -13,6 +13,10 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterViewHolder> {
     List<Lake> lakeList;
 
+    public void setLakeList(List<Lake> list){
+        this.lakeList = list;
+    }
+
     public ItemAdapter(List<Lake> lakeList) {
         this.lakeList = lakeList;
     }
