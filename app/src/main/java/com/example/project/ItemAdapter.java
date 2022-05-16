@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterViewHolder> {
-    List<Lake> lakeList;
+   private List<Lake> lakeList;
 
     public void setLakeList(List<Lake> list){
         this.lakeList = list;
@@ -24,7 +25,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
     @NonNull
     @Override
     public ItemAdapter.ItemAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view, parent,false);
+        return new ItemAdapterViewHolder(view);
     }
 
     @Override
@@ -44,7 +46,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
 
     @Override
     public int getItemCount() {
-        return 0;
+        return lakeList.size();
     }
 
     public class ItemAdapterViewHolder extends RecyclerView.ViewHolder {
@@ -76,6 +78,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             wiki = itemView.findViewById(R.id.wiki);
             img = itemView.findViewById(R.id.imgText);
             imageView = itemView.findViewById(R.id.urlImg);
+
         }
     }
 }

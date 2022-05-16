@@ -1,0 +1,14 @@
+[{
+  "ID": "1",
+  "name": "Vänern",
+  "type": "c21sebar",
+  "company": "company",
+  "location": "Skaraborg",
+  "category": "category",
+  "size": 123,
+  "cost": 1234,
+  "auxdata": {
+    "wiki": "https://sv.wikipedia.org/wiki/V%C3%A4nern",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/3/31/Lake_V%C3%A4nern_details.png"
+  }
+}]
