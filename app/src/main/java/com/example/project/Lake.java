@@ -1,6 +1,7 @@
 package com.example.project;
 
 public class Lake {
+    String id;
     String name;
     String type;
     String company;
@@ -9,6 +10,10 @@ public class Lake {
     int size;
     int cost;
     AuxData auxdata;
+
+    public String getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
