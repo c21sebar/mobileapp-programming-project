@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     private final String JSON_FILE = "lakes.json";
     //private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
     List<Lake> listLake = new ArrayList<>();
-    ItemAdapter itemAdapter = new ItemAdapter(listLake);
+    ItemAdapter itemAdapter = new ItemAdapter(listLake, this);
     RecyclerView recyclerView;
 
     @Override
