@@ -45,8 +45,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         holder.size.setText("Size: " + lakeList.get(position).getSize());
         holder.cost.setText("Cost: " + lakeList.get(position).getCost());
         holder.wiki.setText("Wiki: " + lakeList.get(position).getAuxdata().getWiki());
-        holder.img.setText("img: " + lakeList.get(position).getAuxdata().getImg());
-        Picasso.get().load(lakeList.get(position).getAuxdata().getImg().toString()).into(holder.imageView);
+        holder.img.setText(lakeList.get(position).getAuxdata().getImg());
+       // Picasso.get().load(lakeList.get(position).getAuxdata().getImg().toString()).into(holder.imageView);
 
     }
 
@@ -69,7 +69,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
 
         TextView wiki;
         TextView img;
-        ImageView imageView;
+       // ImageView imageView;
         public ItemAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -83,7 +83,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             cost = itemView.findViewById(R.id.cost);
             wiki = itemView.findViewById(R.id.wiki);
             img = itemView.findViewById(R.id.imgText);
-            imageView = itemView.findViewById(R.id.urlImg);
+          //  imageView = itemView.findViewById(R.id.urlImg);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
