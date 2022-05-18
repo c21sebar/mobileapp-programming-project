@@ -4,13 +4,10 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -36,7 +33,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
 
     @Override
     public void onBindViewHolder(@NonNull ItemAdapter.ItemAdapterViewHolder holder, int position) {
-        holder.ID.setText("ID: " + lakeList.get(position).getId());
+        holder.ID.setText("ID: " + lakeList.get(position).getID());
         holder.name.setText("Namn: " + lakeList.get(position).getName());
         holder.type.setText("Typ: " + lakeList.get(position).getType());
         holder.company.setText("Company: " + lakeList.get(position).getCompany());

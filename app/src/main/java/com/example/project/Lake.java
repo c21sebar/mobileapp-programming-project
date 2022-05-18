@@ -1,7 +1,7 @@
 package com.example.project;
 
 public class Lake {
-    String id;
+    String ID;
     String name;
     String type;
     String company;
@@ -11,8 +11,8 @@ public class Lake {
     int cost;
     AuxData auxdata;
 
-    public String getId() {
-        return id;
+    public String getID() {
+        return ID;
     }
 
     public String getName() {
