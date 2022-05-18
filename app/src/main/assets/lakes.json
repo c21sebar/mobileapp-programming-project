@@ -2,11 +2,11 @@
   "ID": "1",
   "name": "Vänern",
   "type": "c21sebar",
-  "company": "company",
+  "company": "150",
   "location": "Skaraborg",
-  "category": "category",
-  "size": 123,
-  "cost": 1234,
+  "category": "81",
+  "size": 5650,
+  "cost": 106,
   "auxdata": {
     "wiki": "https://sv.wikipedia.org/wiki/V%C3%A4nern",
     "img": "https://upload.wikimedia.org/wikipedia/commons/3/31/Lake_V%C3%A4nern_details.png"
@@ -15,11 +15,11 @@
   "ID": "2",
   "name": "Vättern",
   "type": "c21sebar",
-  "company": "company",
+  "company": "135",
   "location": "Västergötland/Östergötland",
-  "category": "category",
-  "size": 123,
-  "cost": 1234,
+  "category": "31",
+  "size": 1839,
+  "cost": 128,
   "auxdata": {
     "wiki": "https://sv.wikipedia.org/wiki/V%C3%A4ttern",
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Lake_V%C3%A4ttern.svg/800px-Lake_V%C3%A4ttern.svg.png"

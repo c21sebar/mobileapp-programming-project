@@ -36,11 +36,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         holder.ID.setText("ID: " + lakeList.get(position).getID());
         holder.name.setText("Namn: " + lakeList.get(position).getName());
         holder.type.setText("Typ: " + lakeList.get(position).getType());
-        holder.company.setText("Company: " + lakeList.get(position).getCompany());
+        holder.company.setText("Längd: " + lakeList.get(position).getCompany() + "km");
         holder.location.setText("Location: " + lakeList.get(position).getLocation());
-        holder.category.setText("Category: " + lakeList.get(position).getCategory());
-        holder.size.setText("Size: " + lakeList.get(position).getSize());
-        holder.cost.setText("Cost: " + lakeList.get(position).getCost());
+        holder.category.setText("Bredd: " + lakeList.get(position).getCategory()+ "km");
+        holder.size.setText("Areal: " + lakeList.get(position).getSize() + "km2");
+        holder.cost.setText("Max djup: " + lakeList.get(position).getCost() + "m");
         holder.wiki.setText("Wiki: " + lakeList.get(position).getAuxdata().getWiki());
         holder.img.setText(lakeList.get(position).getAuxdata().getImg());
        // Picasso.get().load(lakeList.get(position).getAuxdata().getImg().toString()).into(holder.imageView);
