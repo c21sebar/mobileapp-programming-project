@@ -22,14 +22,14 @@ public class SecondActivity  extends AppCompatActivity {
 
         final String name = getIntent().getExtras().getString("namn");
         final String imgURL = getIntent().getExtras().getString("imgURL");
-        final String URLimg = "https://upload.wikimedia.org/wikipedia/commons/3/37/Hjortens_Udde%2C_lake_V%C3%A4nern_Sweden%2C_2003-04.jpg";
+
         text =findViewById(R.id.secondActivityTextView);
         text.setText(name);
 
         imageView = findViewById(R.id.secondActivityImageView);
 
         Log.d("img", imgURL);
-        Log.d("img", URLimg);
+
         Picasso.get().load(imgURL).into(imageView);
 
         button = findViewById(R.id.finishButton);
