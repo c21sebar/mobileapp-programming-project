@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,6 +16,9 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
@@ -63,9 +64,16 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
-    public void showExternalWebPage(){
-
+    public void sortByID(){
+        Collections.sort(listLake, new Comparator<Lake>() {
+            @Override
+            public int compare(Lake lake1, Lake lake2) {
+                return lake1.ID.compareToIgnoreCase(lake2.ID);
+            }
+        });
        Log.d("menu","Option 1");
+       Collections.reverse(listLake);
+       itemAdapter.notifyDataSetChanged();
     }
 
     public void showAboutPage(){
@@ -87,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_external_web) {
             Log.d("==>","Will display external web page");
-            showExternalWebPage();
+            sortByID();
             return true;
         }
 
