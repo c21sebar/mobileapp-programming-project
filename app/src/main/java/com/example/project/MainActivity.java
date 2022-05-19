@@ -1,9 +1,12 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         //new JsonTask(this).execute(JSON_URL); //för url
         new JsonFile(this, this).execute(JSON_FILE); //För lokalt
 
+
+
     }
 
     @Override
@@ -59,15 +64,17 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         return true;
     }
     public void showExternalWebPage(){
-        // TODO: Add your code for showing external web page here
+
        Log.d("menu","Option 1");
     }
 
-    public void showInternalWebPage(){
-        // TODO: Add your code for showing internal web page here
-        Log.d("menu","Option 2");
+    public void showAboutPage(){
 
-        // myWebView.loadUrl("file:///android_asset/about.html");
+        Log.d("menu","Option 2");
+        Intent intent = new Intent(this, AboutActivity.class);
+
+        this.startActivity(intent);
+
     }
 
     @Override
@@ -86,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         if (id == R.id.action_internal_web) {
             Log.d("==>","Will display internal web page");
-            showInternalWebPage();
+            showAboutPage();
             return true;
         }
 
