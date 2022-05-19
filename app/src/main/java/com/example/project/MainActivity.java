@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
     private final String JSON_FILE = "lakes.json";
-    //private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
+    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=c21sebar";
     List<Lake> listLake = new ArrayList<>();
     ItemAdapter itemAdapter = new ItemAdapter(listLake, this);
     RecyclerView recyclerView;
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         recyclerView = findViewById(R.id.recyclerViewID);
         recyclerView.setAdapter(itemAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        //new JsonTask(this).execute(JSON_URL); //för url
-        new JsonFile(this, this).execute(JSON_FILE); //För lokalt
+        new JsonTask(this).execute(JSON_URL); //för url
+        //new JsonFile(this, this).execute(JSON_FILE); //För lokalt
 
 
 
