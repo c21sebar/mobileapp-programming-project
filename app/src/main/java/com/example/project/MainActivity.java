@@ -100,13 +100,12 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Collections.sort(listLake, new Comparator<Lake>() {
             @Override
             public int compare(Lake lake1, Lake lake2) {
-                if (lake1.location == "Skaraborg"){
-
-                    return lake1.location.compareToIgnoreCase(lake2.location);
+                if (lake1.location.contains("Skaraborg") && !lake2.location.contains("Skaraborg")) {
+                    return 1;
+                }else if (!lake1.location.contains("Skaraborg") && lake2.location.contains("Skaraborg")) {
+                    return -1;
                 }
-                else{
-                    return lake2.location.compareToIgnoreCase(lake1.location);
-                }
+                return 0;
 
             }
         });
