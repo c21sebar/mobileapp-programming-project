@@ -3,13 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.webviewapp.MainActivity">
     <item
-        android:id="@+id/action_external_web"
-        android:orderInCategory="100"
-        android:title="Option 1"
+        android:id="@+id/showAboutPage"
+        android:orderInCategory="001"
+        android:title="About Page"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_internal_web"
-        android:orderInCategory="110"
-        android:title="Option 2"
+        android:id="@+id/sortByHigestID"
+        android:orderInCategory="002"
+        android:title="Högst ID"
         app:showAsAction="never" />
+
+    <item android:title="Max Djup"
+        android:orderInCategory="003"
+        android:id="@+id/maxDjup"/>
+
+    <item android:title="Störst Areal"
+        android:id="@+id/störstAreal"
+        android:orderInCategory="004"/>
+
+    <item android:title="Skaraborg"
+        android:id="@+id/skaraborg"
+        android:orderInCategory="005"
+        />
 </menu>

@@ -16,7 +16,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -93,13 +92,13 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_external_web) {
+        if (id == R.id.sortByHigestID) {
             Log.d("==>","Will display external web page");
             sortByID();
             return true;
         }
 
-        if (id == R.id.action_internal_web) {
+        if (id == R.id.showAboutPage) {
             Log.d("==>","Will display internal web page");
             showAboutPage();
             return true;
