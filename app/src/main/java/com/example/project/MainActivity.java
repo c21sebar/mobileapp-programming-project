@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
                 return lake1.ID.compareToIgnoreCase(lake2.ID);
             }
         });
-       Log.d("menu","Option 1");
+       Log.d("menu","Sortera efter Max ID");
        Collections.reverse(listLake);
        itemAdapter.notifyDataSetChanged();
     }
@@ -81,14 +81,44 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
                 return lake1.size - lake2.size;
             }
         });
-        Log.d("menu","Option 1");
+        Log.d("menu","Soretera efter Areal");
+        Collections.reverse(listLake);
+        itemAdapter.notifyDataSetChanged();
+    }
+    public void sortByDjup(){
+        Collections.sort(listLake, new Comparator<Lake>() {
+            @Override
+            public int compare(Lake lake1, Lake lake2) {
+                return lake1.cost - lake2.cost;
+            }
+        });
+        Log.d("menu","Sortera efter max djup");
+        Collections.reverse(listLake);
+        itemAdapter.notifyDataSetChanged();
+    }
+    public void sortBySkaraborg(){
+        Collections.sort(listLake, new Comparator<Lake>() {
+            @Override
+            public int compare(Lake lake1, Lake lake2) {
+                if (lake1.location == "Skaraborg"){
+
+                    return lake1.location.compareToIgnoreCase(lake2.location);
+                }
+                else{
+                    return lake2.location.compareToIgnoreCase(lake1.location);
+                }
+
+            }
+        });
+        Log.d("menu","Sorter efter Skaraborg");
         Collections.reverse(listLake);
         itemAdapter.notifyDataSetChanged();
     }
 
+
     public void showAboutPage(){
 
-        Log.d("menu","Option 2");
+        Log.d("menu","Öppna about page");
         Intent intent = new Intent(this, AboutActivity.class);
 
         this.startActivity(intent);
@@ -118,6 +148,14 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             sortByAreal();
             Log.d("menu","Sort by highest Areal");
 
+        }
+        if (id == R.id.maxDjup){
+            Log.d("menu","Sort by max djup");
+            sortByDjup();
+        }
+        if (id == R.id.skaraborg){
+            Log.d("menu","Sort by Skaraborg");
+            sortBySkaraborg();
         }
 
         return super.onOptionsItemSelected(item);
