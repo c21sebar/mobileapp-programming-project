@@ -18,7 +18,7 @@
         android:id="@+id/maxDjup"/>
 
     <item android:title="Störst Areal"
-        android:id="@+id/störstAreal"
+        android:id="@+id/biggestAreal"
         android:orderInCategory="004"/>
 
     <item android:title="Skaraborg"

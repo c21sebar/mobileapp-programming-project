@@ -74,6 +74,17 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
        Collections.reverse(listLake);
        itemAdapter.notifyDataSetChanged();
     }
+    public void sortByAreal(){
+        Collections.sort(listLake, new Comparator<Lake>() {
+            @Override
+            public int compare(Lake lake1, Lake lake2) {
+                return lake1.size - lake2.size;
+            }
+        });
+        Log.d("menu","Option 1");
+        Collections.reverse(listLake);
+        itemAdapter.notifyDataSetChanged();
+    }
 
     public void showAboutPage(){
 
@@ -93,15 +104,20 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.sortByHigestID) {
-            Log.d("==>","Will display external web page");
+            Log.d("menu","Sorting by highest ID");
             sortByID();
             return true;
         }
 
         if (id == R.id.showAboutPage) {
-            Log.d("==>","Will display internal web page");
+            Log.d("menu","Opens about page");
             showAboutPage();
             return true;
+        }
+        if (id == R.id.biggestAreal){
+            sortByAreal();
+            Log.d("menu","Sort by highest Areal");
+
         }
 
         return super.onOptionsItemSelected(item);
