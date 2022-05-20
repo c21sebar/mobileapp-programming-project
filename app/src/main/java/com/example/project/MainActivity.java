@@ -1,6 +1,7 @@
 package com.example.project;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     List<Lake> listLake = new ArrayList<>();
     ItemAdapter itemAdapter = new ItemAdapter(listLake, this);
     RecyclerView recyclerView;
+    private SharedPreferences myPreferenceRef;
+    private SharedPreferences.Editor myPreferenceEditor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,44 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         new JsonTask(this).execute(JSON_URL); //för url
         //new JsonFile(this, this).execute(JSON_FILE); //För lokalt
 
+        myPreferenceRef = getSharedPreferences("SharedPreference", MODE_PRIVATE);
+        myPreferenceEditor = myPreferenceRef.edit();
+    }
+    void readSort(){
 
+        String read = myPreferenceRef.getString("Sort","0");
+        Log.d("sort","read: " + read);
+        switch (read){
+            case "ID": {
+                sortByID();
+                itemAdapter.notifyDataSetChanged();
+                Log.d("sort","ID sortering laddad");
+                break;
+            }
+            case "Areal":{
+                sortByAreal();
+                itemAdapter.notifyDataSetChanged();
+                Log.d("sort","Areal sortering laddad");
+                break;
+
+            }
+            case "Djup":{
+                sortByDjup();
+                itemAdapter.notifyDataSetChanged();
+                Log.d("sort","Djup sortering laddad");
+                break;
+            }
+            case "Skaraborg":{
+                sortBySkaraborg();
+                itemAdapter.notifyDataSetChanged();
+                Log.d("sort","Skaraborg sortering laddad");
+                break;
+
+            }
+            default:{
+                Log.d("sort","Ingen sortering laddad");
+            }
+        }
 
     }
 
@@ -53,6 +94,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Log.d("MainActivity", "lake lista2: " + listLake.size());
         itemAdapter.setLakeList(listLake);
         itemAdapter.notifyDataSetChanged();
+        Log.d("sort","Json laddad");
+        readSort();
 
 
     }
@@ -73,6 +116,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
        Log.d("menu","Sortera efter Max ID");
        Collections.reverse(listLake);
        itemAdapter.notifyDataSetChanged();
+        myPreferenceEditor.putString("Sort", "ID");
+        myPreferenceEditor.apply();
     }
     public void sortByAreal(){
         Collections.sort(listLake, new Comparator<Lake>() {
@@ -81,20 +126,25 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
                 return lake1.size - lake2.size;
             }
         });
-        Log.d("menu","Soretera efter Areal");
+        Log.d("menu","Sortera efter Areal");
         Collections.reverse(listLake);
         itemAdapter.notifyDataSetChanged();
+        myPreferenceEditor.putString("Sort", "Areal");
+        myPreferenceEditor.apply();
     }
     public void sortByDjup(){
         Collections.sort(listLake, new Comparator<Lake>() {
             @Override
             public int compare(Lake lake1, Lake lake2) {
                 return lake1.cost - lake2.cost;
+
             }
         });
         Log.d("menu","Sortera efter max djup");
         Collections.reverse(listLake);
         itemAdapter.notifyDataSetChanged();
+        myPreferenceEditor.putString("Sort", "Djup");
+        myPreferenceEditor.apply();
     }
     public void sortBySkaraborg(){
         Collections.sort(listLake, new Comparator<Lake>() {
@@ -109,9 +159,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
             }
         });
-        Log.d("menu","Sorter efter Skaraborg");
+        Log.d("menu","Sortera efter Skaraborg");
         Collections.reverse(listLake);
         itemAdapter.notifyDataSetChanged();
+        myPreferenceEditor.putString("Sort", "Skaraborg");
+        myPreferenceEditor.apply();
     }
 
 
