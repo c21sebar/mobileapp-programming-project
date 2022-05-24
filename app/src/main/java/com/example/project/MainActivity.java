@@ -48,11 +48,13 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         myPreferenceRef = getSharedPreferences("SharedPreference", MODE_PRIVATE);
         myPreferenceEditor = myPreferenceRef.edit();
     }
-    void readSort(){
+    void loadFilterSort(){
 
-        String read = myPreferenceRef.getString("Sort","0");
-        Log.d("sort","read: " + read);
-        switch (read){
+        String readSort = myPreferenceRef.getString("Sort","0");
+        String readFilter = myPreferenceRef.getString("Filter","0");
+        Log.d("sort","readSort: " + readSort);
+        Log.d("sort","readFilter: " + readFilter);
+        switch (readSort){
             case "ID": {
                 sortByID();
                // itemAdapter.notifyDataSetChanged();
@@ -79,6 +81,14 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
                 break;
 
             }
+            default:{
+                Log.d("sort","Ingen sortering laddad");
+                noFilter();
+                itemAdapter.notifyDataSetChanged();
+            }
+        }
+        switch (readFilter){
+
             case "filterSkaraborg":{
                 filterBySkaraborg();
                 break;
@@ -91,8 +101,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
                 filterByDjup();
                 break;
             }
+            case "noFilter":{
+                noFilter();
+                break;
+            }
             default:{
-                Log.d("sort","Ingen sortering laddad");
                 noFilter();
                 itemAdapter.notifyDataSetChanged();
             }
@@ -111,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         itemAdapter.setLakeList(listLake);
         itemAdapter.notifyDataSetChanged();
         Log.d("sort","Json laddad");
-        readSort();
+        loadFilterSort();
 
 
     }
@@ -242,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     void noFilter(){
         itemAdapter.setLakeList(listLake);
         itemAdapter.notifyDataSetChanged();
-        myPreferenceEditor.putString("Sort", "ID");
+        myPreferenceEditor.putString("Filter", "noFilter");
         myPreferenceEditor.apply();
     }
     void filterBySkaraborg(){
@@ -254,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         }
         itemAdapter.setLakeList(filterListLake);
         itemAdapter.notifyDataSetChanged();
-        myPreferenceEditor.putString("Sort", "filterSkaraborg");
+        myPreferenceEditor.putString("Filter", "filterSkaraborg");
         myPreferenceEditor.apply();
 
     }
@@ -267,7 +280,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         }
         itemAdapter.setLakeList(filterListLake);
         itemAdapter.notifyDataSetChanged();
-        myPreferenceEditor.putString("Sort", "filterArea");
+        myPreferenceEditor.putString("Filter", "filterArea");
         myPreferenceEditor.apply();
 
     }
@@ -280,7 +293,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         }
         itemAdapter.setLakeList(filterListLake);
         itemAdapter.notifyDataSetChanged();
-        myPreferenceEditor.putString("Sort", "filterDjup");
+        myPreferenceEditor.putString("Filter", "filterDjup");
         myPreferenceEditor.apply();
 
     }
