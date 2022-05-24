@@ -13,10 +13,14 @@ import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterViewHolder> {
    private List<Lake> lakeList;
-   private MainActivity mainActivity;
+
+    private MainActivity mainActivity;
 
     public void setLakeList(List<Lake> list){
         this.lakeList = list;
+    }
+    public List<Lake> getLakeList() {
+        return lakeList;
     }
 
     public ItemAdapter(List<Lake> lakeList, MainActivity activity) {

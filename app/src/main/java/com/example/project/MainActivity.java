@@ -55,29 +55,41 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         switch (read){
             case "ID": {
                 sortByID();
-                itemAdapter.notifyDataSetChanged();
+               // itemAdapter.notifyDataSetChanged();
                 Log.d("sort","ID sortering laddad");
                 break;
             }
             case "Areal":{
                 sortByAreal();
-                itemAdapter.notifyDataSetChanged();
+               // itemAdapter.notifyDataSetChanged();
                 Log.d("sort","Areal sortering laddad");
                 break;
 
             }
             case "Djup":{
                 sortByDjup();
-                itemAdapter.notifyDataSetChanged();
+               // itemAdapter.notifyDataSetChanged();
                 Log.d("sort","Djup sortering laddad");
                 break;
             }
             case "Skaraborg":{
                 sortBySkaraborg();
-                itemAdapter.notifyDataSetChanged();
+                //itemAdapter.notifyDataSetChanged();
                 Log.d("sort","Skaraborg sortering laddad");
                 break;
 
+            }
+            case "filterSkaraborg":{
+                filterBySkaraborg();
+                break;
+            }
+            case "filterArea":{
+                filterByArea();
+                break;
+            }
+            case "filterDjup":{
+                filterByDjup();
+                break;
             }
             default:{
                 Log.d("sort","Ingen sortering laddad");
@@ -111,33 +123,33 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         return true;
     }
     public void sortByID(){
-        Collections.sort(listLake, new Comparator<Lake>() {
+        Collections.sort(itemAdapter.getLakeList(), new Comparator<Lake>() {
             @Override
             public int compare(Lake lake1, Lake lake2) {
                 return lake1.ID.compareToIgnoreCase(lake2.ID);
             }
         });
        Log.d("menu","Sortera efter Max ID");
-       Collections.reverse(listLake);
+       Collections.reverse(itemAdapter.getLakeList());
        itemAdapter.notifyDataSetChanged();
         myPreferenceEditor.putString("Sort", "ID");
         myPreferenceEditor.apply();
     }
     public void sortByAreal(){
-        Collections.sort(listLake, new Comparator<Lake>() {
+        Collections.sort(itemAdapter.getLakeList(), new Comparator<Lake>() {
             @Override
             public int compare(Lake lake1, Lake lake2) {
                 return lake1.size - lake2.size;
             }
         });
         Log.d("menu","Sortera efter Areal");
-        Collections.reverse(listLake);
+        Collections.reverse(itemAdapter.getLakeList());
         itemAdapter.notifyDataSetChanged();
         myPreferenceEditor.putString("Sort", "Areal");
         myPreferenceEditor.apply();
     }
     public void sortByDjup(){
-        Collections.sort(listLake, new Comparator<Lake>() {
+        Collections.sort(itemAdapter.getLakeList(), new Comparator<Lake>() {
             @Override
             public int compare(Lake lake1, Lake lake2) {
                 return lake1.cost - lake2.cost;
@@ -145,13 +157,13 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             }
         });
         Log.d("menu","Sortera efter max djup");
-        Collections.reverse(listLake);
+        Collections.reverse(itemAdapter.getLakeList());
         itemAdapter.notifyDataSetChanged();
         myPreferenceEditor.putString("Sort", "Djup");
         myPreferenceEditor.apply();
     }
     public void sortBySkaraborg(){
-        Collections.sort(listLake, new Comparator<Lake>() {
+        Collections.sort(itemAdapter.getLakeList(), new Comparator<Lake>() {
             @Override
             public int compare(Lake lake1, Lake lake2) {
                 if (lake1.location.contains("Skaraborg") && !lake2.location.contains("Skaraborg")) {
@@ -164,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             }
         });
         Log.d("menu","Sortera efter Skaraborg");
-        Collections.reverse(listLake);
+        Collections.reverse(itemAdapter.getLakeList());
         itemAdapter.notifyDataSetChanged();
         myPreferenceEditor.putString("Sort", "Skaraborg");
         myPreferenceEditor.apply();
@@ -230,6 +242,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     void noFilter(){
         itemAdapter.setLakeList(listLake);
         itemAdapter.notifyDataSetChanged();
+        myPreferenceEditor.putString("Sort", "ID");
+        myPreferenceEditor.apply();
     }
     void filterBySkaraborg(){
         List<Lake> filterListLake = new ArrayList<>();
@@ -240,6 +254,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         }
         itemAdapter.setLakeList(filterListLake);
         itemAdapter.notifyDataSetChanged();
+        myPreferenceEditor.putString("Sort", "filterSkaraborg");
+        myPreferenceEditor.apply();
 
     }
     void filterByArea(){
@@ -251,6 +267,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         }
         itemAdapter.setLakeList(filterListLake);
         itemAdapter.notifyDataSetChanged();
+        myPreferenceEditor.putString("Sort", "filterArea");
+        myPreferenceEditor.apply();
 
     }
     void filterByDjup(){
@@ -262,6 +280,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         }
         itemAdapter.setLakeList(filterListLake);
         itemAdapter.notifyDataSetChanged();
+        myPreferenceEditor.putString("Sort", "filterDjup");
+        myPreferenceEditor.apply();
 
     }
 
