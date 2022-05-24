@@ -41,9 +41,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         holder.category.setText("Bredd: " + lakeList.get(position).getCategory()+ "km");
         holder.size.setText("Areal: " + lakeList.get(position).getSize() + "km2");
         holder.cost.setText("Max djup: " + lakeList.get(position).getCost() + "m");
-        holder.wiki.setText("Wiki: " + lakeList.get(position).getAuxdata().getWiki());
-        holder.img.setText(lakeList.get(position).getAuxdata().getImg());
+      //  holder.wiki.setText("Wiki: " + lakeList.get(position).getAuxdata().getWiki());
+      //  holder.img.setText(lakeList.get(position).getAuxdata().getImg());
        // Picasso.get().load(lakeList.get(position).getAuxdata().getImg().toString()).into(holder.imageView);
+        holder.wikiLink = lakeList.get(position).getAuxdata().getWiki();
+        holder.imgLink = lakeList.get(position).getAuxdata().getImg();
 
     }
 
@@ -63,9 +65,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         TextView category;
         TextView size;
         TextView cost;
-
-        TextView wiki;
-        TextView img;
+        //TextView wiki;
+        String wikiLink;
+       // TextView img;
+        String imgLink;
        // ImageView imageView;
         public ItemAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,15 +81,24 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             category = itemView.findViewById(R.id.category);
             size = itemView.findViewById(R.id.size);
             cost = itemView.findViewById(R.id.cost);
-            wiki = itemView.findViewById(R.id.wiki);
-            img = itemView.findViewById(R.id.imgText);
+           // wiki = itemView.findViewById(R.id.wiki);
+           // img = itemView.findViewById(R.id.imgText);
           //  imageView = itemView.findViewById(R.id.urlImg);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(mainActivity, SecondActivity.class);
+                    intent.putExtra("ID",""+ ID.getText());
                     intent.putExtra("namn", "" + name.getText());
-                    intent.putExtra("imgURL", "" + img.getText());
+                    intent.putExtra("type", "" + type.getText());
+                    intent.putExtra("company", "" + company.getText());
+                    intent.putExtra("location", "" + location.getText());
+                    intent.putExtra("category", "" + category.getText());
+                    intent.putExtra("size", "" + size.getText());
+                    intent.putExtra("cost", "" + cost.getText());
+                    intent.putExtra("imgURL", "" + imgLink);
+                    intent.putExtra("wikiLink", "" + wikiLink);
+
                     mainActivity.startActivity(intent);
                 }
             });
