@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     private final String JSON_FILE = "lakes.json";
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=c21sebar";
     List<Lake> listLake = new ArrayList<>();
+
+
     ItemAdapter itemAdapter = new ItemAdapter(listLake, this);
     RecyclerView recyclerView;
     private SharedPreferences myPreferenceRef;
@@ -79,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             }
             default:{
                 Log.d("sort","Ingen sortering laddad");
+                noFilter();
+                itemAdapter.notifyDataSetChanged();
             }
         }
 
@@ -207,9 +211,25 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         if (id == R.id.skaraborg){
             Log.d("menu","Sort by Skaraborg");
             sortBySkaraborg();
+            filterBySkaraborg();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    void noFilter(){
+        itemAdapter.setLakeList(listLake);
+        itemAdapter.notifyDataSetChanged();
+    }
+    void filterBySkaraborg(){
+        List<Lake> filterListLake = new ArrayList<>();
+        for (int i =0; i<listLake.size(); i++){
+            if ("Skaraborg".equalsIgnoreCase(listLake.get(i).getLocation())){
+                filterListLake.add(listLake.get(i));
+            }
+        }
+        itemAdapter.setLakeList(filterListLake);
+        itemAdapter.notifyDataSetChanged();
+
     }
 
 }

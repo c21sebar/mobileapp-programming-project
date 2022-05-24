@@ -25,4 +25,13 @@
         android:id="@+id/skaraborg"
         android:orderInCategory="005"
         />
+    <item android:title="FilterSkaraborg"
+        android:orderInCategory="006"
+        android:id="@+id/FilterSkaraborg"/>
+    <item android:title="FilterDjup"
+        android:orderInCategory="007"
+        android:id="@+id/FilterDjup"/>
+    <item android:title="FilterArea"
+        android:orderInCategory="007"
+        android:id="@+id/FilterArea"/>
 </menu>
