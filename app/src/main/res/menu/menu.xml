@@ -28,10 +28,18 @@
     <item android:title="FilterSkaraborg"
         android:orderInCategory="006"
         android:id="@+id/FilterSkaraborg"/>
+
     <item android:title="FilterDjup"
         android:orderInCategory="007"
         android:id="@+id/FilterDjup"/>
-    <item android:title="FilterArea"
+
+    <item
+        android:id="@+id/FilterArea"
         android:orderInCategory="007"
-        android:id="@+id/FilterArea"/>
+        android:title="FilterArea > 100km2" />
+
+    <item android:title="NoFilter"
+        android:orderInCategory="007"
+        android:id="@+id/NoFilter"/>
+
 </menu>

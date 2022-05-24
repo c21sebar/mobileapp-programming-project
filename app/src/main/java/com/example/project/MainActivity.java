@@ -211,7 +211,18 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         if (id == R.id.skaraborg){
             Log.d("menu","Sort by Skaraborg");
             sortBySkaraborg();
+        }
+        if(id==R.id.FilterSkaraborg){
             filterBySkaraborg();
+        }
+        if(id==R.id.FilterArea){
+            filterByArea();
+        }
+        if(id==R.id.FilterDjup){
+            filterByDjup();
+        }
+        if(id==R.id.NoFilter){
+            noFilter();
         }
 
         return super.onOptionsItemSelected(item);
@@ -224,6 +235,28 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         List<Lake> filterListLake = new ArrayList<>();
         for (int i =0; i<listLake.size(); i++){
             if ("Skaraborg".equalsIgnoreCase(listLake.get(i).getLocation())){
+                filterListLake.add(listLake.get(i));
+            }
+        }
+        itemAdapter.setLakeList(filterListLake);
+        itemAdapter.notifyDataSetChanged();
+
+    }
+    void filterByArea(){
+        List<Lake> filterListLake = new ArrayList<>();
+        for (int i =0; i<listLake.size(); i++){
+            if (100<(listLake.get(i).getSize())){
+                filterListLake.add(listLake.get(i));
+            }
+        }
+        itemAdapter.setLakeList(filterListLake);
+        itemAdapter.notifyDataSetChanged();
+
+    }
+    void filterByDjup(){
+        List<Lake> filterListLake = new ArrayList<>();
+        for (int i =0; i<listLake.size(); i++){
+            if (20 >= (listLake.get(i).getCost())){
                 filterListLake.add(listLake.get(i));
             }
         }
