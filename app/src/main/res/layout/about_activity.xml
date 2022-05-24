@@ -9,7 +9,8 @@
         android:id="@+id/aboutText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="AboutActivityText"
+        android:text="Denna app riktar sig mot en målgrupp som är intresserad av information om sjöar. Appen listar information om de 5 största sjöarna och 2 extra i skaraborgs området. \n
+Informationen som visas är: Namn, Längd, Vart, Bredd, Area, Max djup samt en länk till wikipedia. Klickar man på ett item, en sjö i listan, så får man en detalj vy där namnet på sjön visas tillsammans med en bild.  "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
