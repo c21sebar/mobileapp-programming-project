@@ -10,36 +10,41 @@
     <item
         android:id="@+id/sortByHigestID"
         android:orderInCategory="002"
-        android:title="Högst ID"
+        android:title="Sortering: Högst ID"
         app:showAsAction="never" />
 
-    <item android:title="Max Djup"
+    <item
+        android:id="@+id/maxDjup"
         android:orderInCategory="003"
-        android:id="@+id/maxDjup"/>
+        android:title="Sortering: Max Djup" />
 
-    <item android:title="Störst Areal"
+    <item
         android:id="@+id/biggestAreal"
-        android:orderInCategory="004"/>
+        android:orderInCategory="004"
+        android:title="Sortering: Störst Areal" />
 
-    <item android:title="Skaraborg"
+    <item
         android:id="@+id/skaraborg"
         android:orderInCategory="005"
-        />
-    <item android:title="FilterSkaraborg"
+        android:title="Sortering: Skaraborg" />
+    <item
+        android:id="@+id/FilterSkaraborg"
         android:orderInCategory="006"
-        android:id="@+id/FilterSkaraborg"/>
+        android:title="Filter: Finns i Skaraborg" />
 
-    <item android:title="FilterDjup"
+    <item
+        android:id="@+id/FilterDjup"
         android:orderInCategory="007"
-        android:id="@+id/FilterDjup"/>
+        android:title="Filter: Djup <= 20m" />
 
     <item
         android:id="@+id/FilterArea"
         android:orderInCategory="007"
-        android:title="FilterArea > 100km2" />
+        android:title="Filter: Area > 100km2" />
 
-    <item android:title="NoFilter"
+    <item
+        android:id="@+id/NoFilter"
         android:orderInCategory="007"
-        android:id="@+id/NoFilter"/>
+        android:title="Inget Filter" />
 
 </menu>
