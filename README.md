@@ -7,13 +7,17 @@ Projektet är en slags kombination av alla de tidigare duggorna. Det blir som at
 En recycler view skapades med tillhörande item. Itemet innehåller 8st textViews i en linearLayout med vertikal sortering.
 Sedan skapades en itemAdapter för att kunna använda recyclerview och koppla rätt värden till rätt item.
 
-Det skapades en Lake klass som innehåller strings och int med getters för varje värde. LAke klassen innehåller även en AuxData klass som har egna värden med getters.
+Det skapades en Lake klass som innehåller strings och int med getters för varje värde. Lake klassen innehåller även en AuxData klass som har egna värden med getters.
 Genom att kolla tillbaka på tidigare nätverksdugga där json-data introducerades och filer och kod som gav genom dugga gjorde jag två klasser där den ena klassen (JsonFile) läser in jsondata från en lokal fil och den andra klassen från nätet (JsonTask).
 
 Jag använde mig av https://jsonlint.com/ för att validera och strukturera datan och en lokal fil för att testa appen.
 
 Jag skapade en detaljvy när man klickar på ett item och skickar med data via intents.
 I deltajvyn finns mer information och en bild som inte finns i recyclerview.
+```Java
+        holder.wikiLink = lakeList.get(position).getAuxdata().getWiki();
+        holder.imgLink = lakeList.get(position).getAuxdata().getImg();
+```
 
 ```Java
   itemView.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +82,15 @@ public boolean onOptionsItemSelected(MenuItem item) {
             showAboutPage();
             return true;
         }
+```
+När funktionaliteten i appen var klar laddade jag upp data till webtjänsten och bytte från att använda lokal fil till att hämta och använda jsondatan från webtjänsten.
+```Java
+    private final String JSON_FILE = "lakes.json";
+    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=c21sebar";
+```
+```Java
+        new JsonTask(this).execute(JSON_URL); //för url
+        //new JsonFile(this, this).execute(JSON_FILE); //För lokalt
 ```
 
 Andra meny alternativ är sortering och filter för recyclerview.
@@ -195,4 +208,7 @@ void loadFilterSort(){
     }
 
 ```
-![](android.png)
+![](Screenshot_20220525_130050.png)
+![](Screenshot_20220525_130102.png)
+![](Screenshot_20220525_130112.png)
+![](Screenshot_20220525_130135.png)
